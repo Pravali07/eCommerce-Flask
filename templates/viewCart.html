@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>inKaart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+.container-fluid
+{
+  width: 600px;
+  margin-bottom: 30px;
+  padding: 20px;
+  text-align: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,0.5);
+}
+.container
+{
+  text-align: center;
+  justify-content: center;
+}
+.btn
+  {
+      border-radius: 0px;
+  }
+.btn:hover
+  {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.5);
+  }
+.border
+{
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2);
+  padding-top: 10px;
+  width: 600px;
+  background-color: #0275d8;
+  color: white;
+  margin-bottom: 20px;
+}
+@media (max-width:576px)
+{
+  .container-fluid
+  {
+    width: 300px;
+  }
+  .border
+  {
+    width: 300px;
+  }
+}
+@media only screen 
+and (min-device-width : 411px) 
+and (max-device-width : 731px)  { 
+body
+{
+  width: 100%;
+}
+.container-fluid
+{
+  width: 300px;
+}
+.border
+{
+  width: 300px;
+}
+}
+</style>
+<body>
+  <nav class="sc-AxirZ bJCmFu navbar navbar-expand-md navbar-dark"style="background-color: #0275d8;margin-bottom: 30px;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon" style="color: black;"></span></button>
+  <div class="collapse navbar-collapse align-items-center" id="collapsibleNavbar">
+    <a href="{{url_for('viewProducts')}}">
+      <i class="fa fa-long-arrow-left fa-2x" style="color:white;"></i>
+    </a>
+  </div>
+ </nav>
+  {%if flag == True%}
+  <h2 style="text-align: center;margin-bottom: 20px;">My Cart</h2>
+    {%for i in details%}
+      {%if i.inCart == True%}
+      <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-6">
+              <img src="../static/images/photo{{i.id}}.jpg" style="height: 160px; width: 80px;">
+          </div>
+          <div class="col-lg-6">
+              <h4>Model: {{i.name}}</h4>
+              <h5>Price: ${{i.price}}</h5>
+              <h5>Total: ${{i.price + i.tax}}</h5><br>
+              <a href="{{url_for('viewCart', r_id=i.id)}}" class="btn btn-outline-danger">Remove from Cart</a>
+          </div>
+      </div>
+      </div>
+{%endif%}
+{%endfor%}
+<div class="container border">
+  <h5>Total - ${{total}}</h5>
+</div>
+{%endif%}
+{%if flag == False%}
+<div class="container">
+  <img src="../static/images/cart.png" style="width: 200px;height: 200px;margin-top: 20px;">
+  <h2>Your cart is empty!</h2>
+  <p>Add items to it now</p>
+  <a href="{{url_for('viewProducts')}}" class="btn btn-outline-primary" style="font-weight:bold;">Shop now</a>
+</div>
+{%endif%}
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>inKaart</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<style type="text/css">
+	body
+	{
+		font-family: "Montserrat",sans-serif!important;
+		background-color:white;
+	}
+	.container 
+	{
+		margin-top: 40px;
+	    padding: 10px;
+	    max-width: 850px;
+	    display: flex;
+	}
+	.modal-content 
+	{
+		font-family: "Montserrat",sans-serif;
+		text-align: center;
+	}
+	.btn
+	{
+	    border-radius: 0px;
+	}
+	.modal-dialog 
+	{
+	    width: 350px;
+	}
+	.btn:hover
+	{
+		box-shadow: 0 3px 8px 0 rgba(0,0,0,0.5);
+	}
+	</style>
+</head>
+<body>
+ <div id="root">
+ <nav class="sc-AxirZ bJCmFu navbar navbar-expand-md navbar-dark" style="background-color: #0275d8;">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon" style="color: black;"></span></button>
+  <div class="collapse navbar-collapse align-items-center" id="collapsibleNavbar">
+    <a href="{{url_for('viewProducts')}}">
+      <i class="fa fa-long-arrow-left fa-2x" style="color:white;"></i>
+    </a>
+  </div>
+</nav>
+{%for i in details%}
+{%if i.id == id %}
+	<div class="container py-5">
+	<div class="row">
+	<div class="col-10 mx-auto">
+	</div>
+	<div class="row">
+	<div class="col-10 mx-auto col-lg-6 my-5">
+		<img src="../static/images/photo{{i.id}}.jpg" class="img-fluid mx-auto d-block" alt="product" style="width: 180px;height: 370px;">
+	</div>
+	<div class="col-10 mx-auto col-lg-6 my-5">
+	<h2 style="color: #002240 ;">Model : {{i.name}}</h2>
+	<h3 class="mt-3" style="color: #767676  ; font-weight: 500;">Price : ${{i.price}}</h3>
+	<p class="text-capitalize font-weight-bold">
+	<h3 style="font-weight: 500;">Description:</h3>
+	</p><p style="font-family: Open Sans,sans-serif;color:#002240;font-size: 20px;">{{i.description}}</p>
+	<div>
+	{%if i.inCart == False%}
+		<a href="{{url_for('sample',r_id = i.id)}}" class="btn btn-outline-primary" style="font-weight: bold;">Add to Cart</a>
+	{%endif%}
+	{%if i.inCart == True%}
+		<a href="{{url_for('sample',r_id = i.id)}}" class="btn btn-outline-success" style="font-weight: bold;">Added to cart</a>
+		<a href="#" class="btn btn-outline-primary" style="font-weight: bold;"data-toggle="modal" data-target=".bd-example-modal-sm">View Details</a>
+	{%endif%}
+	<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h3 class="modal-title" id="addtocart" style="font-family:Montserrat,sans-serif!important; "><b style="color: #2a2a72;font-family: Montserrat,sans-serif;">Item added to Cart</b></h3>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+		       <img src="../static/images/photo{{i.id}}.jpg" class="img-fluid mx-auto d-block" style="width: 80px;height: 180px;margin-bottom: 20px;"alt="product">
+		       <h5 style="font-weight: 500; font-family: Montserrat,sans-serif;">Model : {{i.name}}</h5>
+	       </div>
+	       <div class="modal-footer">
+		        <a href="{{url_for('viewProducts')}}" class="btn btn-outline-danger"style="font-weight: 600;font-family: Montserrat,sans-serif;" role="button">Continue Shopping</a>
+		        <a href="{{url_for('viewCart',r_id = 0)}}" class="btn btn-outline-primary" style="font-weight: 600;font-family: Montserrat,sans-serif;" role="button">View Cart</a>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	</div>
+	</div></div></div></div></div>
+	{%endif%}
+ {%endfor%}
+</div>
+</body>
+
+</html>
