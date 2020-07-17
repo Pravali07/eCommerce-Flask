@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>inKaart</title>
+	<meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700" rel="stylesheet" type="text/css">
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <style type="text/css">
+   body
+  {
+  background-color:#D3D3D3;
+  font-family: monospace;
+  color:black;
+  width: 100%;
+  height: 100%;
+  font-family: Open Sans,sans-serif;
+  }
+  .impact {
+    font-family: Impact, Charcoal, sans-serif;
+  }
+  .btn
+  {
+    border-radius: 0px;
+    font-weight: bold;
+  }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    float: left;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+    width: 20rem; height: 29rem;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  }
+  .card .btn:hover
+  {
+   box-shadow: 0 3px 8px 0 rgba(0,0,0,0.5);
+  }
+  .sansserif {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .ml-auto a
+  {
+    text-decoration: none;
+    color: black;
+    margin-left: 25px;
+    font-size: 18px;
+  }
+  .card-img-top
+  {
+  width: 120px;
+  height: 250px;
+  }
+  .monospace {
+    font-family: "Lucida Console", Courier, monospace;
+  }
+  @media (max-width:576px)
+  {
+    .card
+    {
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 19rem; 
+      height: 29rem;
+    }
+    .card-img-top
+     {
+      width: 100px;
+      height: 220px;
+     }
+  }
+  @media only screen 
+  and (min-device-width : 411px) 
+  and (max-device-width : 731px)  { 
+  .card
+  {
+    width: 21rem;
+    height: 29rem;
+    margin-left: 20px;
+  }
+  .card-img-top
+  {
+    width: 120px;
+    height: 250px;
+  }
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-width: 568px) 
+  and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 40/71)
+  {
+     .card{
+      width:17rem;
+      height: 29rem;
+      margin:10px 10px 10px 10px;
+     }
+     .container
+     {
+      width: 100%;
+     }
+     .card-img-top
+     {
+      width: 100px;
+      height: 220px;
+     }
+  }
+  @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px)  { 
+  .card
+  {
+    width: 16rem;
+    height: 29rem;
+  }
+  .card-img-top
+  {
+    width: 100px;
+    height: 200px;
+  }
+  }
+  }
+</style>
+</head>
+<body>
+<nav class="sc-AxirZ bJCmFu navbar navbar-expand-md navbar-dark" style="background-color: #0275d8;"><a href="{{url_for('viewProducts')}}"><img src="../static/images/title.png" alt="store" class="navbar-brand" height="55px" style="width: 140px;"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"><span class="navbar-toggler-icon" style="color: black;"></span></button>
+  <div class="collapse navbar-collapse align-items-center" id="collapsibleNavbar">
+      <a href="{{url_for('viewCart',r_id=0)}}" class="sc-AxjAm bdNIKK btn btn-outline-primary ml-auto" style="color: white;"><span class="mr-2"><i class="fa fa-cart-plus"></i></span>My Cart</button>
+    </a>
+  </div>
+</nav>
+<h2 style="text-align: center;margin-top: 30px;font-family:sansserif;font-size: 45px;">All Products</h2>
+<div class="container">
+{%for i in data%}
+<div class="card">
+  <img class="card-img-top" src="../static/images/photo{{i.id}}.jpg" style="margin-left: auto;margin-right: auto;background-size: cover;margin-top: 10px;" alt="Product{{i.id}}">
+  <div class="card-body">
+    <h5 class="card-title"><b>{{i.name}}</b></h5>
+    <p style="font-size: 13px;">{{i.description}}</p>
+    <a href="{{url_for('viewDetails',r_id = i.id)}}" class="btn btn-outline-primary" style="font-weight: bold;">View Product</a>
+  </div>
+</div>
+{%endfor%}
+</div>
+</script>
+</body>
+</html>
