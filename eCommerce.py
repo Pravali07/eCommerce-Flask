@@ -30,7 +30,7 @@ def write_file(data, filename):
     with open(filename, 'wb') as file:
         file.write(data)
 
-@app.route('/eCommerce', methods = ['GET', 'POST'])
+@app.route('/', methods = ['GET', 'POST'])
 def viewProducts():
 	dbData=session.query(Products).all()
 	for i in dbData:
